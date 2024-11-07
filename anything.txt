@@ -1,0 +1,30 @@
+access key --> l2CmpZAVAq3seYdYrAN62btu11q3gbuLuvc8pLCKgzGi1PNJYITifSaBCHgOCRTxMhucSYVCIn5J+AStVG7svg==
+
+
+kubectl create secret generic azure-secret \
+  --from-literal=azurestorageaccountname=stgapp0123 \
+  --from-literal=azurestorageaccountkey=l2CmpZAVAq3seYdYrAN62btu11q3gbuLuvc8pLCKgzGi1PNJYITifSaBCHgOCRTxMhucSYVCIn5J+AStVG7svg==
+
+
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=stgapp0123 --from-literal=azurestorageaccountkey=l2CmpZAVAq3seYdYrAN62btu11q3gbuLuvc8pLCKgzGi1PNJYITifSaBCHgOCRTxMhucSYVCIn5J+AStVG7svg==
+
+
+  git config --global user.email "saurabhjisce@gmail.com"
+  git config --global user.name "sau4545"
+  https://github.com/sau4545/terraformgithub.git
+
+
+
+git remote add origin https://github.com/sau4545/terraformgithub.git
+
+git branch -m main <BRANCH>
+git fetch origin
+git branch -u origin/<BRANCH> <BRANCH>
+git remote set-head origin -a
+git pull origin main --allow-unrelated-histories
+git pull origin main
+git push origin main
+https://github.com/sau4545/terraformgit.git
+
+
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\MonitoringAgent\Agent\AzureLogAnalytics" | Select-Object WorkspaceID, WorkspaceKey

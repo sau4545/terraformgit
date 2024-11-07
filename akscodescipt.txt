@@ -1,0 +1,27 @@
+az group create --name rg-dev-app01 --location West Europe
+
+az group create --location westeurope --resource-group rg-dev-app01
+
+az aks create \
+  --resource-group rg-dev-app01 \
+  --name myAKSCluster \
+  --node-count 3 \
+  --enable-addons monitoring \
+  --generate-ssh-keys
+
+
+az aks create --resource-group rg-dev-app01 --name aks8lcs --node-count 1 --enable-addons monitoring --generate-ssh-keys
+
+az aks get-credentials --resource-group rg-dev-app01 --name aks8lcs
+
+az aks get-credentials --resource-group rg-dev-app01 --name aks8lcs --overwrite-existing
+
+
+
+pv.yml
+
+pvc.yml
+
+pod.yml
+
+storageclassboundname : saurabhcv
