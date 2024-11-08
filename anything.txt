@@ -15,7 +15,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 
 
-git remote add origin https://github.com/sau4545/terraformgithub.git
+git remote add origin https://github.com/sau4545/terraformgit.git
 
 git branch -m main <BRANCH>
 git fetch origin
