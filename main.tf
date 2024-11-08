@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg-app-dev01" {
 }
 
 resource "azurerm_resource_group" "rg-app-dev02" {
-    name = "rg-qa-app02"
-    location = "northeurope"
+    name = "rg-qa-app03"
+    location = "eastus"
   
 }
