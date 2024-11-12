@@ -1,0 +1,45 @@
+# azure-pipelines.yml
+trigger:
+  branches:
+    include:
+      - main  # Adjust to the branch where your code is located
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  # Define Terraform working directory, if necessary
+  terraformWorkingDirectory: $(System.DefaultWorkingDirectory)
+
+stages:
+  - stage: Terraform_Deploy
+    jobs:
+      - job: TerraformJob
+        displayName: "Terraform Deployment Job"
+
+        steps:
+          - checkout: self
+
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.x'
+            displayName: 'Use Python 3.x' # Required for Az CLI
+
+          - task: AzureCLI@2
+            inputs:
+              azureSubscription: 'GO-SPN-TEST-Sandbox01' # Replace with your Azure Service Connection name
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                # Install Terraform
+                curl -sSL https://releases.hashicorp.com/terraform/1.5.3/terraform_1.5.3_linux_amd64.zip -o terraform.zip
+                unzip terraform.zip
+                sudo mv terraform /usr/local/bin/
+                terraform -version
+                
+                # Initialize Terraform
+                terraform init -input=false
+                
+                # Apply Terraform
+                terraform apply -input=false -auto-approve
+            displayName: 'Run Terraform Init and Apply'
