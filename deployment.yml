@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-sourav-load
+  namespace: default
+spec:
+  replicas: 7
+  selector:   
+    # matchLabels:
+    #  app: testserver
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+        - testserver
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 25%       
+  template:
+    metadata:
+      labels:
+        app: testserver
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80        

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: deploy-sourav
+  namespace: default
+spec:
+  replicas: 2
+  selector:   
+    matchLabels:
+      app: testserver
+  template:
+    metadata:
+      name: nginx-pod
+      namespace: default
+      labels:
+        app: testserver
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80        
